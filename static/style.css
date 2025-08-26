@@ -1,0 +1,202 @@
+/* General styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background: #f8f9fa; /* Light grey */
+}
+
+/* Navbar styles */
+.navbar {
+    background: #343a40; /* Dark grey */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand, .nav-link {
+    color: #fff !important;
+}
+
+.nav-link:hover {
+    color: #ccc !important;
+    transform: scale(1.1);
+}
+
+/* Hero section */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://via.placeholder.com/1920x1080?text=Hero+Background') no-repeat center/cover;
+    background-color: #000; /* Black fallback */
+}
+
+.animated-hero-title {
+    font-family: 'Montserrat', sans-serif;
+    animation: fadeInDown 1.5s ease-out;
+    color: #fff;
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-btn {
+    transition: all 0.3s ease;
+    border: 1px solid #fff;
+}
+
+.hero-btn:hover {
+    background: #fff !important;
+    color: #000 !important;
+    transform: translateY(-5px);
+}
+
+/* Translation section */
+.translation {
+    background: #e9ecef; /* Light grey */
+}
+
+.section-title {
+    font-weight: 600;
+    color: #333;
+    animation: slideInLeft 1s ease-out;
+}
+
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.form-label {
+    font-weight: 500;
+    color: #555;
+}
+
+/* Specific styles for text area and file input */
+#text-input textarea,
+#pdf-input input[type="file"] {
+    min-height: 150px !important; /* Increased height */
+    padding: 15px !important; /* Increased padding */
+    font-size: 1.1rem !important; /* Larger text */
+    width: 100% !important; /* Ensure full width */
+}
+
+.form-select,
+textarea,
+input[type="file"] {
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    background: #fff;
+    transition: all 0.3s ease;
+}
+
+.input-hover:hover,
+.input-hover:focus {
+    border-color: #6c757d;
+    box-shadow: 0 0 10px rgba(108, 117, 125, 0.3);
+    transform: translateY(-3px);
+}
+
+/* Input type buttons */
+.btn-group .btn {
+    transition: all 0.3s ease;
+}
+
+.btn-group .btn.active {
+    background: #343a40;
+    color: #fff;
+}
+
+.btn-group .btn:hover {
+    background: #495057;
+    color: #fff;
+}
+
+/* PDF upload */
+.pdf-upload {
+    background: #fff;
+    color: #fff;
+    border: none;
+    padding: 15px !important; /* Increased padding */
+    height: 20px !important; /* Fixed height */
+    line-height: 50px !important; /* Align text vertically */
+}
+
+.pdf-upload:hover {
+}
+
+/* Buttons */
+.btn-hover {
+    transition: all 0.3s ease;
+}
+
+.btn-hover:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Text output */
+.text-output {
+    background: #fff;
+    color: #333;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* About section */
+.about {
+    background: #6c757d; /* Medium grey */
+}
+
+.card {
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-title {
+    color: #fff;
+}
+
+.card-text {
+    color: #ccc;
+}
+
+/* Input group visibility */
+.input-group {
+    display: none;
+}
+
+.input-group.active {
+    display: block;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero {
+        vh-100: auto;
+        min-height: 80vh;
+    }
+
+    .display-1 {
+        font-size: 3rem;
+    }
+
+    #text-input textarea,
+    #pdf-input input[type="file"] {
+        min-height: 100px !important; /* Adjusted for smaller screens */
+        font-size: 1rem !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .btn-lg {
+        font-size: 1rem;
+    }
+}

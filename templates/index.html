@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlobalTongue</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="icon" href="static/logo.jpg" type="image/png">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">GlobalTongue</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about-section">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero d-flex align-items-center justify-content-center text-center text-white vh-100">
+        <div class="container">
+            <h1 class="display-1 animated-hero-title">Where Languages Meet and People Connect.</h1>
+            <a href="#translation-section" class="btn btn-light btn-lg mt-4 hero-btn">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Translation Section -->
+    <section id="translation-section" class="translation py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5 section-title">Translate Your Content</h2>
+            <form id="translator-form" class="needs-validation" novalidate>
+                <div class="mb-4 text-center">
+                    <label class="form-label d-block mb-3">Select Input Type:</label>
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-secondary input-type-btn active" data-type="text">Text</button>
+                        <button type="button" class="btn btn-secondary input-type-btn" data-type="pdf">PDF</button>
+                        <button type="button" class="btn btn-secondary input-type-btn" data-type="audio">Voice</button>
+                    </div>
+                    <input type="hidden" id="inputType" name="inputType" value="text">
+                </div>
+
+                <div id="text-input" class="input-group mb-4 active">
+                    <label for="inputText" class="form-label">Enter Text:</label>
+                    <textarea name="inputText" id="inputText" class="form-control form-control-lg input-hover" placeholder="Enter text here..." rows="8"></textarea>
+                </div>
+
+                <div id="pdf-input" class="input-group mb-4">
+                    <label for="pdfFile" class="form-label">Upload PDF:</label>
+                    <input type="file" name="pdfFile" id="pdfFile" class="form-control form-control-lg input-hover pdf-upload" accept=".pdf">
+                </div>
+
+                <div id="audio-input" class="input-group mb-4">
+                    <label for="audioText" class="form-label">Record Voice:</label>
+                    <div class="d-flex">
+                        <button type="button" id="startRecording" class="btn btn-dark me-2 btn-hover">Start</button>
+                        <button type="button" id="stopRecording" class="btn btn-secondary btn-hover">Stop</button>
+                    </div>
+                    <input type="hidden" id="audioText" name="audioText">
+                </div>
+
+                <div class="mb-4">
+                    <label for="targetLang" class="form-label">Choose Language:</label>
+                    <select name="targetLang" id="targetLang" class="form-select form-control-lg input-hover" required>
+                        <option value="en">English</option>
+                        <option value="es">Spanish</option>
+                        <option value="fr">French</option>
+                        <option value="de">German</option>
+                        <option value="hi">Hindi</option>
+                        <option value="te">Telugu</option>
+                        <option value="ta">Tamil</option>
+                        <option value="kn">Kannada</option>
+                        <option value="ml">Malayalam</option>
+                        <option value="mr">Marathi</option>
+                        <option value="gu">Gujarati</option>
+                        <option value="bn">Bengali</option>
+                        <option value="pa">Punjabi</option>
+                        <option value="or">Odia</option>
+                        <option value="ur">Urdu</option>
+                        <option value="zh-cn">Chinese (Simplified)</option>
+                        <option value="ar">Arabic</option>
+                        <option value="ru">Russian</option>
+                        <option value="ja">Japanese</option>
+                        <option value="ko">Korean</option>
+                        <option value="it">Italian</option>
+                        <option value="pt">Portuguese</option>
+                        <option value="nl">Dutch</option>
+                        <option value="sv">Swedish</option>
+                        <option value="da">Danish</option>
+                        <option value="no">Norwegian</option>
+                        <option value="fi">Finnish</option>
+                        <option value="pl">Polish</option>
+                        <option value="cs">Czech</option>
+                        <option value="el">Greek</option>
+                        <option value="tr">Turkish</option>
+                        <option value="th">Thai</option>
+                        <option value="vi">Vietnamese</option>
+                        <option value="he">Hebrew</option>
+                        <option value="hu">Hungarian</option>
+                        <option value="uk">Ukrainian</option>
+                        <option value="bg">Bulgarian</option>
+                        <option value="hr">Croatian</option>
+                        <option value="sk">Slovak</option>
+                        <option value="sl">Slovenian</option>
+                        <option value="ro">Romanian</option>
+                        <option value="id">Indonesian</option>
+                        <option value="ms">Malay</option>
+                        <option value="ta">Tamil</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-dark w-100 btn-lg btn-hover">Translate Now</button>
+            </form>
+
+            <div class="output-group mt-5">
+                <label class="form-label fw-bold">Extracted Text:</label>
+                <div id="extractedText" class="text-output p-3 mb-4 bg-white border">Waiting for input...</div>
+            
+                <label class="form-label fw-bold">Translated Text:</label>
+                <div id="translationResult" class="text-output p-3 bg-white border">Translation will appear here.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about-section" class="about py-5 bg-secondary text-white">
+        <div class="container">
+            <h2 class="text-center mb-5 section-title">About Our Translation Features</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card bg-dark text-white h-100 card-hover">
+                        <div class="card-body">
+                            <h5 class="card-title">Text Translation</h5>
+                            <p class="card-text">Easily translate any text input into your chosen language. Simply type or paste the text, select the target language, and get instant results.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card bg-dark text-white h-100 card-hover">
+                        <div class="card-body">
+                            <h5 class="card-title">PDF Translation</h5>
+                            <p class="card-text">Upload PDF documents and translate their content seamlessly. Our tool extracts text from PDFs and provides accurate translations.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card bg-dark text-white h-100 card-hover">
+                        <div class="card-body">
+                            <h5 class="card-title">Voice Translation</h5>
+                            <p class="card-text">Record your voice and translate spoken words in real-time. Perfect for conversations, speeches, or any audio input.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let recognition;
+        let isRecording = false;
+
+        // Handle input type buttons
+        const inputTypeBtns = document.querySelectorAll('.input-type-btn');
+        inputTypeBtns.forEach(btn => {
+            btn.addEventListener('click', function () {
+                inputTypeBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                document.getElementById('inputType').value = this.dataset.type;
+
+                // Hide all inputs first
+                document.getElementById('text-input').classList.remove('active');
+                document.getElementById('pdf-input').classList.remove('active');
+                document.getElementById('audio-input').classList.remove('active');
+
+                // Show the corresponding input
+                document.getElementById(this.dataset.type + '-input').classList.add('active');
+            });
+        });
+
+        document.getElementById('startRecording').addEventListener('click', function () {
+            if (!('webkitSpeechRecognition' in window)) {
+                alert('Your browser does not support Speech Recognition. Please use Google Chrome.');
+                return;
+            }
+
+            if (!isRecording) {
+                recognition = new webkitSpeechRecognition();
+                recognition.continuous = true;
+                recognition.interimResults = false;
+                recognition.lang = 'en-US';
+
+                recognition.onresult = function (event) {
+                    let transcript = '';
+                    for (let i = 0; i < event.results.length; i++) {
+                        transcript += event.results[i][0].transcript;
+                    }
+                    document.getElementById('audioText').value = transcript;
+                    document.getElementById('extractedText').innerText = transcript;
+                };
+
+                recognition.start();
+                isRecording = true;
+            }
+        });
+
+        document.getElementById('stopRecording').addEventListener('click', function () {
+            if (isRecording && recognition) {
+                recognition.stop();
+                isRecording = false;
+            }
+        });
+
+        document.getElementById('translator-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+
+            fetch('/translate', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('extractedText').innerText = data.extractedText || '';
+                document.getElementById('translationResult').innerText = "Translation: " + data.translation;
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>
